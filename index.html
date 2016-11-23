@@ -16,9 +16,10 @@
     
     
 </head>
+
 <body ng-app="svgApp" ng-controller="svgController">
  
-    <svg class="chart--content" width="{{width}}" height="{{height}}" xmlns="http://www.w3.org/2000/svg">
+    <svg class="chart--content" ng-attr-width="{{width}}" ng-attr-height="{{height}}" xmlns="http://www.w3.org/2000/svg">
 
         <!-- axis -->
         <g class="chart--x-grid">
@@ -29,23 +30,17 @@
         </g>
         
         <!-- axis labels -->
-        <g class="labels x-labels" ng-repeat="x in xAxisLabels()">
-            <text data-ng-atrr-x="{{x}}" y="400">{{x}}</text>
-            
-<!--            <text x="400" y="440" class="label-title">Year</text>-->
+        <g class="labels x-labels">
+            <text ng-repeat="x in xAxisLabels track by $index" ng-attr-x="{{ x[0] }}" y="415">{{ x[1] }}</text>
         </g>
-<!--
-        <g class="labels y-labels">
-            <text x="80" y="15">15</text>
-            <text x="80" y="131">10</text>
-            <text x="80" y="248">5</text>
-            <text x="80" y="373">0</text>
-            <text x="50" y="200" class="label-title">Value</text>
-        </g>
--->
         
-        <path class="chart--line" ng-attr-d="{{linePath()}}"></path>
+        <g class="labels y-labels">
+            <text ng-repeat="y in yAxisLabels track by $index" x="-5" ng-attr-y="{{ y[0] + 5 }}">{{ y[1] | currency }}</text>
+        </g>
+        
+        <path class="chart--line" ng-attr-d="{{ linePath(points) }}"></path>
     </svg>
-    
+
 </body>
+
 </html>
