@@ -1,0 +1,26 @@
+.chart--content {
+    background: #d3d3d3;
+    padding: 0;
+    padding: 20px 20px 100px 100px;
+}
+
+.chart--line {
+    fill: none;
+    stroke: #0074d9;
+    stroke-width: 2px;
+}
+
+.chart--x-grid,
+.chart--y-grid{
+    stroke: black;
+    stroke-dasharray: 0;
+    stroke-width: 1;
+}
+
+.labels.x-labels {
+  text-anchor: middle;
+}
+
+.labels.y-labels {
+  text-anchor: end;
+}
